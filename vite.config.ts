@@ -9,7 +9,16 @@ export default defineConfig({
     assetsDir: 'assets',
     rollupOptions: {
       output: {
-        assetFileNames: 'assets/[name][extname]'
+        assetFileNames: (assetInfo) => {
+          if (!assetInfo.name) return 'assets/[name][extname]'
+          if (/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/i.test(assetInfo.name)) {
+            return `assets/media/[name][extname]`
+          }
+          if (/\.(png|jpe?g|gif|svg|bmp|webp)(\?.*)?$/i.test(assetInfo.name)) {
+            return `assets/images/[name][extname]`
+          }
+          return `assets/[name][extname]`
+        }
       }
     }
   }
