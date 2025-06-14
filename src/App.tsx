@@ -2,6 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import styled from "@emotion/styled";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import birthdayPhoto from './assets/images/birthday-photo.jpg';
+import birthdayVideo from './assets/media/birthday-video.mp4';
+import backgroundMusic from './assets/media/Love Like You (Ending Theme) - Steven Universe Piano Cover.mp3';
 
 const Container = styled.div`
   min-height: 100vh;
@@ -425,7 +428,7 @@ const App = () => {
       </AudioControls>
       <AudioPlayer
         ref={audioRef}
-        src="/happy-birthday-project/assets/media/Love Like You (Ending Theme) - Steven Universe Piano Cover.mp3"
+        src={backgroundMusic}
         loop
       />
       <AnimatePresence mode="wait">
@@ -456,7 +459,7 @@ const App = () => {
               <VideoContainer>
                 <Video
                   ref={videoRef}
-                  src="/happy-birthday-project/assets/media/birthday-video.mp4"
+                  src={birthdayVideo}
                   controls
                   playsInline
                   preload="auto"
@@ -495,7 +498,7 @@ const App = () => {
                 <Title>Happy Birthday 🎂🎉</Title>
               </LetterHeader>
               <LetterPhoto
-                src="/happy-birthday-project/assets/images/birthday-photo.jpg"
+                src={birthdayPhoto}
                 alt="Special Memory"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
