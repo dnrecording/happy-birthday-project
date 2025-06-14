@@ -425,7 +425,7 @@ const App = () => {
       </AudioControls>
       <AudioPlayer
         ref={audioRef}
-        src="/Love Like You (Ending Theme) - Steven Universe Piano Cover.mp3"
+        src="/happy-birthday-project/Love Like You (Ending Theme) - Steven Universe Piano Cover.mp3"
         loop
       />
       <AnimatePresence mode="wait">
@@ -456,7 +456,7 @@ const App = () => {
               <VideoContainer>
                 <Video
                   ref={videoRef}
-                  src="/birthday-video.mp4"
+                  src="/happy-birthday-project/birthday-video.mp4"
                   controls
                   playsInline
                   preload="auto"
@@ -495,7 +495,7 @@ const App = () => {
                 <Title>Happy Birthday 🎂🎉</Title>
               </LetterHeader>
               <LetterPhoto
-                src="/birthday-photo.jpg"
+                src="/happy-birthday-project/birthday-photo.jpg"
                 alt="Special Memory"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
