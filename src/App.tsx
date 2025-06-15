@@ -9,7 +9,8 @@ import backgroundMusic from './assets/media/Love Like You (Ending Theme) - Steve
 const Container = styled.div`
   min-height: 100vh;
   min-height: -webkit-fill-available;
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   overflow-x: hidden;
   background: #fafafa;
   display: flex;
@@ -37,7 +38,8 @@ const Page = styled(motion.div)`
 
 const Letter = styled(motion.div)`
   background: #ffffff;
-  width: min(800px, 90%);
+  width: 100%;
+  max-width: 800px;
   min-height: 80vh;
   min-height: -webkit-fill-available;
   padding: clamp(1rem, 3vw, 4rem);
@@ -47,6 +49,7 @@ const Letter = styled(motion.div)`
   flex-direction: column;
   gap: 1.5rem;
   box-sizing: border-box;
+  margin: 0 1rem;
 `;
 
 const LetterHeader = styled.div`
@@ -207,7 +210,8 @@ const AudioPlayer = styled.audio`
 `;
 
 const VideoPage = styled(motion.div)`
-  width: min(800px, 90%);
+  width: 100%;
+  max-width: 800px;
   min-height: 80vh;
   min-height: -webkit-fill-available;
   display: flex;
@@ -217,6 +221,7 @@ const VideoPage = styled(motion.div)`
   gap: 2rem;
   padding: 1rem;
   box-sizing: border-box;
+  margin: 0 1rem;
 `;
 
 const VideoContainer = styled.div`
@@ -264,7 +269,8 @@ const VideoBackButton = styled(motion.button)`
 `;
 
 const BackPage = styled(motion.div)`
-  width: min(800px, 90%);
+  width: 100%;
+  max-width: 800px;
   min-height: 80vh;
   min-height: -webkit-fill-available;
   display: flex;
@@ -276,6 +282,7 @@ const BackPage = styled(motion.div)`
   padding: clamp(1rem, 3vw, 4rem);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
+  margin: 0 1rem;
 `;
 
 const BackPageText = styled(motion.p)`
@@ -310,6 +317,7 @@ const pageTransition = {
 const App = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -332,13 +340,14 @@ const App = () => {
     audio.addEventListener("pause", handlePause);
     audio.addEventListener("ended", handleEnded);
 
-    // Play on first interaction
+    // Play on first interaction only
     const handleFirstInteraction = () => {
-      if (!isPlaying) {
+      if (!hasInteracted && !isPlaying) {
         audio
           .play()
           .then(() => {
             setIsPlaying(true);
+            setHasInteracted(true);
           })
           .catch((error) => {
             console.error("Failed to play:", error);
@@ -355,7 +364,7 @@ const App = () => {
       audio.removeEventListener("ended", handleEnded);
       document.removeEventListener("click", handleFirstInteraction);
     };
-  }, [isPlaying]);
+  }, [isPlaying, hasInteracted]);
 
   useEffect(() => {
     const video = videoRef.current;
