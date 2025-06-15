@@ -16,7 +16,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0;
   color: #2c1810;
   position: relative;
   -webkit-overflow-scrolling: touch;
@@ -35,12 +35,13 @@ const Page = styled(motion.div)`
   min-height: -webkit-fill-available;
   padding: 0.5rem;
   box-sizing: border-box;
+  overflow-y: auto;
 `;
 
 const LandingPage = styled(motion.div)`
   width: 100%;
   max-width: 800px;
-  min-height: 80vh;
+  min-height: 100vh;
   min-height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
@@ -48,17 +49,17 @@ const LandingPage = styled(motion.div)`
   justify-content: center;
   text-align: center;
   background: #ffffff;
-  padding: clamp(1rem, 4vw, 3rem);
+  padding: clamp(0.5rem, 3vw, 2rem);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  margin: 0 0.5rem;
-  gap: 1.5rem;
+  margin: 0;
+  gap: 1rem;
 `;
 
 const LandingTitle = styled(motion.h1)`
   font-size: clamp(1.5rem, 6vw, 2.5rem);
   color: #2c1810;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-weight: 300;
   letter-spacing: 1px;
   line-height: 1.4;
@@ -70,30 +71,35 @@ const LandingSubtitle = styled(motion.p)`
   color: #666;
   font-weight: 300;
   letter-spacing: 0.5px;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
   opacity: 0.8;
   padding: 0 1rem;
   line-height: 1.5;
 `;
 
 const LetterPhoto = styled(motion.img)`
-  width: min(280px, 90%);
-  height: 280px;
+  width: min(250px, 85%);
+  height: 250px;
   object-fit: cover;
   border-radius: 4px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  margin: 0.5rem auto;
+  margin: 0.25rem auto;
   border: 1px solid rgba(44, 24, 16, 0.1);
 `;
 
 const AudioControls = styled.div`
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 1rem;
+  right: 1rem;
   display: flex;
   align-items: center;
   gap: 10px;
   z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  padding: 0.5rem;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 `;
 
 const AudioButton = styled.button`
@@ -129,14 +135,15 @@ const VideoContainer = styled.div`
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   background: #000;
-  margin: 0.5rem 0;
+  margin: 0.25rem 0;
+  aspect-ratio: 16/9;
 `;
 
 const Video = styled.video`
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  max-height: 70vh;
+  object-fit: contain;
 `;
 
 const LetterContent = styled(motion.div)`
@@ -146,13 +153,15 @@ const LetterContent = styled(motion.div)`
   font-weight: 300;
   letter-spacing: 0.5px;
   text-align: justify;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   padding: 0 0.5rem;
   width: 100%;
   max-width: 600px;
+  overflow-y: auto;
+  max-height: 60vh;
 
   p {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 `;
 
@@ -161,16 +170,22 @@ const NavigationButtons = styled.div`
   justify-content: space-between;
   width: 100%;
   max-width: 600px;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   padding: 0 0.5rem;
-  gap: 1rem;
+  gap: 0.75rem;
+  position: sticky;
+  bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  padding: 0.5rem;
+  border-radius: 8px;
 `;
 
 const NavButton = styled(motion.button)`
   background: transparent;
   border: 1px solid rgba(44, 24, 16, 0.2);
   color: #2c1810;
-  padding: 0.8rem 1.2rem;
+  padding: 0.7rem 1rem;
   border-radius: 4px;
   cursor: pointer;
   display: flex;
