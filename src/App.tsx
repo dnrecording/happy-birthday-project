@@ -324,9 +324,9 @@ const App = () => {
     audio.addEventListener("pause", handlePause);
     audio.addEventListener("ended", handleEnded);
 
-    // Only try to play on first interaction if we're on the letter page
+    // Play on first interaction
     const handleFirstInteraction = () => {
-      if (!isPlaying && currentPage === 2) {
+      if (!isPlaying) {
         audio
           .play()
           .then(() => {
@@ -347,7 +347,7 @@ const App = () => {
       audio.removeEventListener("ended", handleEnded);
       document.removeEventListener("click", handleFirstInteraction);
     };
-  }, [isPlaying, currentPage]);
+  }, [isPlaying]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -395,6 +395,12 @@ const App = () => {
 
   const handleLetterPageClick = () => {
     setCurrentPage(2);
+    // Stop the music when entering video page
+    const audio = audioRef.current;
+    if (audio) {
+      audio.pause();
+      setIsPlaying(false);
+    }
   };
 
   const handleReturn = () => {
