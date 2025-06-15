@@ -9,7 +9,7 @@ import backgroundMusic from "./assets/media/Love Like You (Ending Theme) - Steve
 const Container = styled.div`
   min-height: 100vh;
   min-height: -webkit-fill-available;
-  width: 100%;
+  width: 100vw;
   max-width: 100vw;
   overflow-x: hidden;
   background: #fafafa;
@@ -24,23 +24,23 @@ const Container = styled.div`
 `;
 
 const Page = styled(motion.div)`
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   min-height: -webkit-fill-available;
-  padding: 0.5rem;
+  padding: 0;
   box-sizing: border-box;
   overflow-y: auto;
 `;
 
 const LandingPage = styled(motion.div)`
-  width: 100%;
-  max-width: 800px;
+  width: 100vw;
+  max-width: 100vw;
   min-height: 100vh;
   min-height: -webkit-fill-available;
   display: flex;
@@ -50,7 +50,6 @@ const LandingPage = styled(motion.div)`
   text-align: center;
   background: #ffffff;
   padding: clamp(0.5rem, 3vw, 2rem);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   margin: 0;
   gap: 1rem;
@@ -63,7 +62,9 @@ const LandingTitle = styled(motion.h1)`
   font-weight: 300;
   letter-spacing: 1px;
   line-height: 1.4;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
+  width: 100%;
+  max-width: 600px;
 `;
 
 const LandingSubtitle = styled(motion.p)`
@@ -75,6 +76,8 @@ const LandingSubtitle = styled(motion.p)`
   opacity: 0.8;
   padding: 0 1rem;
   line-height: 1.5;
+  width: 100%;
+  max-width: 600px;
 `;
 
 const LetterPhoto = styled(motion.img)`
@@ -154,7 +157,7 @@ const LetterContent = styled(motion.div)`
   letter-spacing: 0.5px;
   text-align: justify;
   margin: 0.5rem 0;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
   width: 100%;
   max-width: 600px;
   overflow-y: auto;
@@ -171,14 +174,14 @@ const NavigationButtons = styled.div`
   width: 100%;
   max-width: 600px;
   margin-top: 0.5rem;
-  padding: 0 0.5rem;
+  padding: 0.5rem 1rem;
   gap: 0.75rem;
   position: sticky;
   bottom: 0.5rem;
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(5px);
-  padding: 0.5rem;
   border-radius: 8px;
+  box-sizing: border-box;
 `;
 
 const NavButton = styled(motion.button)`
