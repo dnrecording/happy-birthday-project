@@ -1,3 +1,47 @@
+# Happy Birthday Project
+
+A special birthday website created with React, TypeScript, and Vite. This project features:
+- A beautiful letter page
+- A video message
+- Background music
+- Smooth page transitions
+- Responsive design
+
+## Development
+
+To run the project locally:
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+## Deployment
+
+This project is deployed using GitHub Pages. To deploy:
+
+```bash
+# Build the project
+npm run build
+
+# Deploy to GitHub Pages
+npm run deploy
+```
+
+The site is available at: https://dnrecording.github.io/happy-birthday-project
+
+## Technologies Used
+
+- React
+- TypeScript
+- Vite
+- Emotion (for styled components)
+- Framer Motion (for animations)
+- React Icons
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
