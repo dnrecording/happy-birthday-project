@@ -393,30 +393,24 @@ const App = () => {
     setCurrentPage(1);
   };
 
-  const handleVideoPageClick = () => {
+  const handleLetterPageClick = () => {
     setCurrentPage(2);
-    // Play the song when entering the letter page
-    const audio = audioRef.current;
-    if (audio) {
-      audio.play().catch(console.error);
-      setIsPlaying(true);
-    }
   };
 
   const handleReturn = () => {
     setCurrentPage(0);
   };
 
-  const handleLetterBackClick = () => {
-    setCurrentPage(3);
+  const handleLetterPageBack = () => {
+    setCurrentPage(0);
   };
 
   const handleBackPageReturn = () => {
-    setCurrentPage(2);
+    setCurrentPage(1);
   };
 
-  const handleLetterPageBack = () => {
-    setCurrentPage(1);
+  const handleLetterBackClick = () => {
+    setCurrentPage(3);
   };
 
   return (
@@ -447,43 +441,6 @@ const App = () => {
             </FrontPage>
           </Page>
         ) : currentPage === 1 ? (
-          <Page
-            key="video"
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={pageVariants}
-            transition={pageTransition}
-          >
-            <VideoPage>
-              <VideoContainer>
-                <Video
-                  ref={videoRef}
-                  src={birthdayVideo}
-                  controls
-                  playsInline
-                  preload="auto"
-                />
-              </VideoContainer>
-              <ButtonContainer>
-                <VideoBackButton
-                  onClick={handleReturn}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <FaArrowLeft /> Back
-                </VideoBackButton>
-                <VideoBackButton
-                  onClick={handleVideoPageClick}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Continue <FaArrowRight />
-                </VideoBackButton>
-              </ButtonContainer>
-            </VideoPage>
-          </Page>
-        ) : currentPage === 2 ? (
           <Page
             key="letter"
             initial="initial"
@@ -547,7 +504,7 @@ const App = () => {
                   <FaArrowLeft /> Back
                 </LetterButton>
                 <LetterButton
-                  onClick={handleLetterBackClick}
+                  onClick={handleLetterPageClick}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -555,6 +512,43 @@ const App = () => {
                 </LetterButton>
               </LetterButtonContainer>
             </Letter>
+          </Page>
+        ) : currentPage === 2 ? (
+          <Page
+            key="video"
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <VideoPage>
+              <VideoContainer>
+                <Video
+                  ref={videoRef}
+                  src={birthdayVideo}
+                  controls
+                  playsInline
+                  preload="auto"
+                />
+              </VideoContainer>
+              <ButtonContainer>
+                <VideoBackButton
+                  onClick={handleReturn}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <FaArrowLeft /> Back
+                </VideoBackButton>
+                <VideoBackButton
+                  onClick={handleLetterBackClick}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Continue <FaArrowRight />
+                </VideoBackButton>
+              </ButtonContainer>
+            </VideoPage>
           </Page>
         ) : (
           <Page
