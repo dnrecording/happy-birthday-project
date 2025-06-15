@@ -8,7 +8,7 @@ import backgroundMusic from './assets/media/Love Like You (Ending Theme) - Steve
 
 const Container = styled.div`
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: -webkit-fill-available;
   width: 100vw;
   overflow-x: hidden;
   background: #fafafa;
@@ -18,6 +18,7 @@ const Container = styled.div`
   padding: 1rem;
   color: #2c1810;
   position: relative;
+  -webkit-overflow-scrolling: touch;
 `;
 
 const Page = styled(motion.div)`
@@ -29,20 +30,23 @@ const Page = styled(motion.div)`
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: -webkit-fill-available;
   padding: 1rem;
+  box-sizing: border-box;
 `;
 
 const Letter = styled(motion.div)`
   background: #ffffff;
   width: min(800px, 90%);
   min-height: 80vh;
-  padding: clamp(2rem, 5vw, 4rem);
+  min-height: -webkit-fill-available;
+  padding: clamp(1rem, 3vw, 4rem);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
+  box-sizing: border-box;
 `;
 
 const LetterHeader = styled.div`
@@ -205,12 +209,14 @@ const AudioPlayer = styled.audio`
 const VideoPage = styled(motion.div)`
   width: min(800px, 90%);
   min-height: 80vh;
+  min-height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  padding: 2rem;
+  padding: 1rem;
+  box-sizing: border-box;
 `;
 
 const VideoContainer = styled.div`
@@ -260,14 +266,16 @@ const VideoBackButton = styled(motion.button)`
 const BackPage = styled(motion.div)`
   width: min(800px, 90%);
   min-height: 80vh;
+  min-height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   background: #ffffff;
-  padding: clamp(2rem, 5vw, 4rem);
+  padding: clamp(1rem, 3vw, 4rem);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 `;
 
 const BackPageText = styled(motion.p)`
