@@ -422,6 +422,13 @@ const App = () => {
 
   const handleReturn = () => {
     setCurrentPage(0);
+    // Resume music when going back to front page
+    const audio = audioRef.current;
+    if (audio && hasInteracted) {
+      audio.play().catch((error) => {
+        console.error("Failed to play:", error);
+      });
+    }
   };
 
   const handleLetterPageBack = () => {
@@ -430,6 +437,13 @@ const App = () => {
 
   const handleBackPageReturn = () => {
     setCurrentPage(1);
+    // Resume music when going back to letter page
+    const audio = audioRef.current;
+    if (audio && hasInteracted) {
+      audio.play().catch((error) => {
+        console.error("Failed to play:", error);
+      });
+    }
   };
 
   const handleLetterBackClick = () => {
