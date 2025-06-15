@@ -64,7 +64,7 @@ Error generating stack: `+n.message+`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 0.5rem;
   color: #2c1810;
   position: relative;
   -webkit-overflow-scrolling: touch;
@@ -79,7 +79,7 @@ Error generating stack: `+n.message+`
   justify-content: center;
   min-height: 100vh;
   min-height: -webkit-fill-available;
-  padding: 1rem;
+  padding: 0.5rem;
   box-sizing: border-box;
 `,Ie=re(Vi.div)`
   width: 100%;
@@ -92,31 +92,35 @@ Error generating stack: `+n.message+`
   justify-content: center;
   text-align: center;
   background: #ffffff;
-  padding: clamp(1rem, 3vw, 4rem);
+  padding: clamp(1rem, 4vw, 3rem);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  margin: 0 1rem;
+  margin: 0 0.5rem;
+  gap: 1.5rem;
 `,Mn=re(Vi.h1)`
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
   color: #2c1810;
-  margin-bottom: 2rem;
-  font-weight: 300;
-  letter-spacing: 2px;
-  line-height: 1.4;
-`,vu=re(Vi.p)`
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  color: #666;
+  margin-bottom: 1rem;
   font-weight: 300;
   letter-spacing: 1px;
-  margin-top: 2rem;
+  line-height: 1.4;
+  padding: 0 0.5rem;
+`,vu=re(Vi.p)`
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  color: #666;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  margin-top: 0.5rem;
   opacity: 0.8;
+  padding: 0 1rem;
+  line-height: 1.5;
 `,vE=re(Vi.img)`
-  width: min(300px, 80%);
-  height: 300px;
+  width: min(280px, 90%);
+  height: 280px;
   object-fit: cover;
   border-radius: 4px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
+  margin: 0.5rem auto;
   border: 1px solid rgba(44, 24, 16, 0.1);
 `,bE=re.div`
   position: fixed;
@@ -149,46 +153,57 @@ Error generating stack: `+n.message+`
   display: none;
 `,xE=re.div`
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   position: relative;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   background: #000;
+  margin: 0.5rem 0;
 `,AE=re.video`
   width: 100%;
   height: auto;
   display: block;
-  max-height: 80vh;
+  max-height: 70vh;
 `,EE=re(Vi.div)`
-  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
   line-height: 1.8;
   color: #333;
   font-weight: 300;
   letter-spacing: 0.5px;
   text-align: justify;
-  margin: 2rem 0;
+  margin: 1rem 0;
+  padding: 0 0.5rem;
   width: 100%;
+  max-width: 600px;
+
+  p {
+    margin-bottom: 1rem;
+  }
 `,ei=re.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-top: 2rem;
-  padding: 0 1rem;
+  max-width: 600px;
+  margin-top: 1rem;
+  padding: 0 0.5rem;
+  gap: 1rem;
 `,le=re(Vi.button)`
   background: transparent;
   border: 1px solid rgba(44, 24, 16, 0.2);
   color: #2c1810;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1.2rem;
   border-radius: 4px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
   transition: all 0.3s ease;
   font-weight: 300;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  flex: 1;
+  justify-content: center;
 
   &:hover {
     background: rgba(44, 24, 16, 0.05);
