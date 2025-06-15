@@ -663,6 +663,35 @@ const App = () => {
           </Page>
         ) : currentPage === 9 ? (
           <Page
+            key="landing9"
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <LandingPage>
+              <LandingTitle>I really like those moments 💖</LandingTitle>
+              <NavigationButtons>
+                <NavButton
+                  onClick={handleBack}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <FaArrowLeft /> Back
+                </NavButton>
+                <NavButton
+                  onClick={handleNext}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Continue <FaArrowRight />
+                </NavButton>
+              </NavigationButtons>
+            </LandingPage>
+          </Page>
+        ) : currentPage === 10 ? (
+          <Page
             key="back"
             initial="initial"
             animate="in"
