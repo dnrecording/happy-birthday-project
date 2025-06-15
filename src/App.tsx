@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import styled from "@emotion/styled";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import birthdayPhoto from './assets/images/birthday-photo.jpg';
-import birthdayVideo from './assets/media/birthday-video.mp4';
-import backgroundMusic from './assets/media/Love Like You (Ending Theme) - Steven Universe Piano Cover.mp3';
+import birthdayPhoto from "./assets/images/birthday-photo.jpg";
+import birthdayVideo from "./assets/media/birthday-video.mp4";
+import backgroundMusic from "./assets/media/Love Like You (Ending Theme) - Steven Universe Piano Cover.mp3";
 
 const Container = styled.div`
   min-height: 100vh;
@@ -20,11 +20,12 @@ const Container = styled.div`
   color: #2c1810;
   position: relative;
   -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
 `;
 
 const Page = styled(motion.div)`
   width: 100%;
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -36,132 +37,39 @@ const Page = styled(motion.div)`
   box-sizing: border-box;
 `;
 
-const Letter = styled(motion.div)`
-  background: #ffffff;
+const LandingPage = styled(motion.div)`
   width: 100%;
   max-width: 800px;
   min-height: 80vh;
   min-height: -webkit-fill-available;
-  padding: clamp(1rem, 3vw, 4rem);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  box-sizing: border-box;
-  margin: 0 1rem;
-`;
-
-const LetterHeader = styled.div`
-  text-align: center;
-  margin-bottom: 2rem;
-`;
-
-const Date = styled.div`
-  font-family: "Courier New", monospace;
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-`;
-
-const Title = styled(motion.h1)`
-  font-size: clamp(2rem, 5vw, 3rem);
-  color: #2c1810;
-  margin-bottom: 1rem;
-  text-align: center;
-  font-weight: 300;
-  letter-spacing: 2px;
-`;
-
-const Content = styled.div`
-  font-size: clamp(1rem, 2vw, 1.1rem);
-  line-height: 1.8;
-  color: #333;
-  font-weight: 300;
-  letter-spacing: 0.5px;
-  text-align: justify;
-  margin: 2rem 0;
-`;
-
-const Signature = styled.div`
-  margin-top: 3rem;
-  text-align: right;
-  font-style: italic;
-  color: #666;
-`;
-
-const FrontPage = styled(motion.div)`
-  width: min(800px, 90%);
-  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  cursor: pointer;
+  background: #ffffff;
+  padding: clamp(1rem, 3vw, 4rem);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  margin: 0 1rem;
 `;
 
-const FrontTitle = styled(motion.h1)`
-  font-size: clamp(2.5rem, 6vw, 4rem);
+const LandingTitle = styled(motion.h1)`
+  font-size: clamp(2rem, 5vw, 3rem);
   color: #2c1810;
   margin-bottom: 2rem;
   font-weight: 300;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   line-height: 1.4;
 `;
 
-const FrontSubtitle = styled(motion.p)`
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
+const LandingSubtitle = styled(motion.p)`
+  font-size: clamp(1rem, 2vw, 1.2rem);
   color: #666;
   font-weight: 300;
   letter-spacing: 1px;
   margin-top: 2rem;
   opacity: 0.8;
-`;
-
-const LetterBackButton = styled(motion.p)`
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
-  color: #666;
-  font-weight: 300;
-  letter-spacing: 1px;
-  margin-top: 2rem;
-  cursor: pointer;
-  opacity: 0.8;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-
-  &:hover {
-    opacity: 1;
-  }
-`;
-
-const LetterButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 2rem;
-`;
-
-const LetterButton = styled(motion.button)`
-  background: transparent;
-  border: 1px solid rgba(44, 24, 16, 0.2);
-  color: #2c1810;
-  padding: 0.8rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  transition: all 0.3s ease;
-  font-weight: 300;
-  letter-spacing: 1px;
-
-  &:hover {
-    background: rgba(44, 24, 16, 0.05);
-  }
 `;
 
 const LetterPhoto = styled(motion.img)`
@@ -209,21 +117,6 @@ const AudioPlayer = styled.audio`
   display: none;
 `;
 
-const VideoPage = styled(motion.div)`
-  width: 100%;
-  max-width: 800px;
-  min-height: 80vh;
-  min-height: -webkit-fill-available;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  padding: 1rem;
-  box-sizing: border-box;
-  margin: 0 1rem;
-`;
-
 const VideoContainer = styled.div`
   width: 100%;
   max-width: 800px;
@@ -241,14 +134,26 @@ const Video = styled.video`
   max-height: 80vh;
 `;
 
-const ButtonContainer = styled.div`
+const LetterContent = styled(motion.div)`
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  line-height: 1.8;
+  color: #333;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  text-align: justify;
+  margin: 2rem 0;
+  width: 100%;
+`;
+
+const NavigationButtons = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-top: 2rem;
   padding: 0 1rem;
 `;
 
-const VideoBackButton = styled(motion.button)`
+const NavButton = styled(motion.button)`
   background: transparent;
   border: 1px solid rgba(44, 24, 16, 0.2);
   color: #2c1810;
@@ -266,32 +171,6 @@ const VideoBackButton = styled(motion.button)`
   &:hover {
     background: rgba(44, 24, 16, 0.05);
   }
-`;
-
-const BackPage = styled(motion.div)`
-  width: 100%;
-  max-width: 800px;
-  min-height: 80vh;
-  min-height: -webkit-fill-available;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: #ffffff;
-  padding: clamp(1rem, 3vw, 4rem);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  margin: 0 1rem;
-`;
-
-const BackPageText = styled(motion.p)`
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
-  color: #2c1810;
-  font-weight: 300;
-  letter-spacing: 1px;
-  line-height: 1.6;
-  margin-bottom: 2rem;
 `;
 
 const pageVariants = {
@@ -406,12 +285,16 @@ const App = () => {
     }
   };
 
-  const handleFrontPageClick = () => {
-    setCurrentPage(1);
+  const handleNext = () => {
+    setCurrentPage((prev) => prev + 1);
   };
 
-  const handleLetterPageClick = () => {
-    setCurrentPage(2);
+  const handleBack = () => {
+    setCurrentPage((prev) => prev - 1);
+  };
+
+  const handleVideoPage = () => {
+    setCurrentPage(8); // Video page index
     // Stop the music when entering video page
     const audio = audioRef.current;
     if (audio) {
@@ -420,34 +303,15 @@ const App = () => {
     }
   };
 
-  const handleReturn = () => {
-    setCurrentPage(0);
-    // Resume music when going back to front page
+  const handleVideoPageBack = () => {
+    setCurrentPage(7); // Back to the page before video
+    // Resume music when going back
     const audio = audioRef.current;
     if (audio && hasInteracted) {
       audio.play().catch((error) => {
         console.error("Failed to play:", error);
       });
     }
-  };
-
-  const handleLetterPageBack = () => {
-    setCurrentPage(0);
-  };
-
-  const handleBackPageReturn = () => {
-    setCurrentPage(1);
-    // Resume music when going back to letter page
-    const audio = audioRef.current;
-    if (audio && hasInteracted) {
-      audio.play().catch((error) => {
-        console.error("Failed to play:", error);
-      });
-    }
-  };
-
-  const handleLetterBackClick = () => {
-    setCurrentPage(3);
   };
 
   return (
@@ -457,27 +321,181 @@ const App = () => {
           {isPlaying ? "🎵" : "🔇"}
         </AudioButton>
       </AudioControls>
-      <AudioPlayer
-        ref={audioRef}
-        src={backgroundMusic}
-        loop
-      />
+      <AudioPlayer ref={audioRef} src={backgroundMusic} loop />
       <AnimatePresence mode="wait">
         {currentPage === 0 ? (
           <Page
-            key="front"
+            key="landing1"
             initial="initial"
             animate="in"
             exit="out"
             variants={pageVariants}
             transition={pageTransition}
           >
-            <FrontPage onClick={handleFrontPageClick}>
-              <FrontTitle>For Someone Special ...?</FrontTitle>
-              <FrontSubtitle>Click to open</FrontSubtitle>
-            </FrontPage>
+            <LandingPage onClick={handleNext} style={{ cursor: "pointer" }}>
+              <LandingTitle>For Someone Special ...?</LandingTitle>
+              <LandingSubtitle>Please open it slowly</LandingSubtitle>
+            </LandingPage>
           </Page>
         ) : currentPage === 1 ? (
+          <Page
+            key="landing2"
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <LandingPage>
+              <LandingTitle>
+                Today is June 16th, and it's your belated birthday 🎉
+              </LandingTitle>
+              <NavigationButtons>
+                <NavButton
+                  onClick={handleBack}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <FaArrowLeft /> Back
+                </NavButton>
+                <NavButton
+                  onClick={handleNext}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Continue <FaArrowRight />
+                </NavButton>
+              </NavigationButtons>
+            </LandingPage>
+          </Page>
+        ) : currentPage === 2 ? (
+          <Page
+            key="landing3"
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <LandingPage>
+              <LandingTitle>This cutie 🫶</LandingTitle>
+              <LetterPhoto
+                src={birthdayPhoto}
+                alt="Special Memory"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              />
+              <NavigationButtons>
+                <NavButton
+                  onClick={handleBack}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <FaArrowLeft /> Back
+                </NavButton>
+                <NavButton
+                  onClick={handleNext}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Continue <FaArrowRight />
+                </NavButton>
+              </NavigationButtons>
+            </LandingPage>
+          </Page>
+        ) : currentPage === 3 ? (
+          <Page
+            key="landing4"
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <LandingPage>
+              <LandingTitle>
+                I also have a card for you. Open it to see what's inside 🤫
+              </LandingTitle>
+              <NavigationButtons>
+                <NavButton
+                  onClick={handleBack}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <FaArrowLeft /> Back
+                </NavButton>
+                <NavButton
+                  onClick={handleNext}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Continue <FaArrowRight />
+                </NavButton>
+              </NavigationButtons>
+            </LandingPage>
+          </Page>
+        ) : currentPage === 4 ? (
+          <Page
+            key="landing5"
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <LandingPage>
+              <LandingTitle>
+                Promise me, don't cry when you read it
+              </LandingTitle>
+              <LandingSubtitle>Because I will cry too 🥺</LandingSubtitle>
+              <NavigationButtons>
+                <NavButton
+                  onClick={handleBack}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <FaArrowLeft /> Back
+                </NavButton>
+                <NavButton
+                  onClick={handleNext}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Continue <FaArrowRight />
+                </NavButton>
+              </NavigationButtons>
+            </LandingPage>
+          </Page>
+        ) : currentPage === 5 ? (
+          <Page
+            key="landing6"
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <LandingPage>
+              <LandingTitle>Now, open it 💌</LandingTitle>
+              <NavigationButtons>
+                <NavButton
+                  onClick={handleBack}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <FaArrowLeft /> Back
+                </NavButton>
+                <NavButton
+                  onClick={handleNext}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Continue <FaArrowRight />
+                </NavButton>
+              </NavigationButtons>
+            </LandingPage>
+          </Page>
+        ) : currentPage === 6 ? (
           <Page
             key="letter"
             initial="initial"
@@ -486,18 +504,9 @@ const App = () => {
             variants={pageVariants}
             transition={pageTransition}
           >
-            <Letter>
-              <LetterHeader>
-                <Date>June 15, 2025</Date>
-                <Title>Happy Birthday 🎂🎉</Title>
-              </LetterHeader>
-              <LetterPhoto
-                src={birthdayPhoto}
-                alt="Special Memory"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              />
-              <Content>
+            <LandingPage>
+              <LandingTitle>Happy Birthday 🎂🎉</LandingTitle>
+              <LetterContent>
                 <p>To Babyboo Pai,</p>
                 <p>
                   I'm not sure if you'll be surprised or not. I remember that
@@ -525,32 +534,64 @@ const App = () => {
                   I'm not a good writer, but I wrote this with my heart. I hope
                   you'll like it.
                 </p>
-              </Content>
-
-              <Signature>
+                <br />
                 <p>Luv u, and happy birthday ❤️</p>
                 <p>Dragon, your babyboo</p>
-              </Signature>
-
-              <LetterButtonContainer>
-                <LetterButton
-                  onClick={handleLetterPageBack}
+              </LetterContent>
+              <NavigationButtons>
+                <NavButton
+                  onClick={handleBack}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <FaArrowLeft /> Back
-                </LetterButton>
-                <LetterButton
-                  onClick={handleLetterPageClick}
+                </NavButton>
+                <NavButton
+                  onClick={handleNext}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   Continue <FaArrowRight />
-                </LetterButton>
-              </LetterButtonContainer>
-            </Letter>
+                </NavButton>
+              </NavigationButtons>
+            </LandingPage>
           </Page>
-        ) : currentPage === 2 ? (
+        ) : currentPage === 7 ? (
+          <Page
+            key="landing8"
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <LandingPage>
+              <LandingTitle>
+                Let's see our short memories together 🎬
+              </LandingTitle>
+              <LandingSubtitle>
+                It's really short because I don't have much time to make it. But
+                I hope you'll like it.
+              </LandingSubtitle>
+              <NavigationButtons>
+                <NavButton
+                  onClick={handleBack}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <FaArrowLeft /> Back
+                </NavButton>
+                <NavButton
+                  onClick={handleVideoPage}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Continue <FaArrowRight />
+                </NavButton>
+              </NavigationButtons>
+            </LandingPage>
+          </Page>
+        ) : currentPage === 8 ? (
           <Page
             key="video"
             initial="initial"
@@ -559,7 +600,7 @@ const App = () => {
             variants={pageVariants}
             transition={pageTransition}
           >
-            <VideoPage>
+            <LandingPage>
               <VideoContainer>
                 <Video
                   ref={videoRef}
@@ -569,25 +610,25 @@ const App = () => {
                   preload="auto"
                 />
               </VideoContainer>
-              <ButtonContainer>
-                <VideoBackButton
-                  onClick={handleReturn}
+              <NavigationButtons>
+                <NavButton
+                  onClick={handleVideoPageBack}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <FaArrowLeft /> Back
-                </VideoBackButton>
-                <VideoBackButton
-                  onClick={handleLetterBackClick}
+                </NavButton>
+                <NavButton
+                  onClick={handleNext}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   Continue <FaArrowRight />
-                </VideoBackButton>
-              </ButtonContainer>
-            </VideoPage>
+                </NavButton>
+              </NavigationButtons>
+            </LandingPage>
           </Page>
-        ) : (
+        ) : currentPage === 9 ? (
           <Page
             key="back"
             initial="initial"
@@ -596,20 +637,12 @@ const App = () => {
             variants={pageVariants}
             transition={pageTransition}
           >
-            <BackPage>
-              <BackPageText>
-                <p>Now, the gift is coming 🎁 ... </p>
-              </BackPageText>
-              <LetterBackButton
-                onClick={handleBackPageReturn}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <FaArrowLeft /> Back to Letter
-              </LetterBackButton>
-            </BackPage>
+            <LandingPage onClick={handleBack} style={{ cursor: "pointer" }}>
+              <LandingTitle>Now, the gift is coming 🎁</LandingTitle>
+              <LandingSubtitle>Click to go back</LandingSubtitle>
+            </LandingPage>
           </Page>
-        )}
+        ) : null}
       </AnimatePresence>
     </Container>
   );
